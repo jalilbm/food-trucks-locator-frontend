@@ -35,7 +35,7 @@ Welcome to the Food Truck Locator App, a creative solution designed for RAKT's "
 
 To get the Food Truck Locator App up and running, follow these simple steps:
 
-1.  **Clone the Repository**: Clone the project to your local machine.
+1.  **Clone the Repository**: Clone the project to your local machine `git clone https://github.com/jalilbm/food-trucks-locator-frontend.git`.
 2.  **Install Dependencies**: Run `npm install` to install the required dependencies.
 3.  **Environment Variables**: The `.env` file is included for simplicity. The Google Maps API key will be provided separately via email.
 4.  **Start the Application**: Execute `npm start` to run the app in development mode.
