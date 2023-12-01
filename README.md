@@ -41,6 +41,12 @@ To get the Food Truck Locator App up and running, follow these simple steps:
 git clone https://github.com/jalilbm/food-trucks-locator-frontend.git
 ```
 
+then
+
+```bash
+cd food-trucks-locator-frontend
+```
+
 2.  **Install Dependencies**: Run `npm install` to install the required dependencies.
 3.  **Environment Variables**: The `.env` file is included for simplicity. The Google Maps API key will be provided separately via email.
 4.  **Start the Application**: Execute `npm start` to run the app in development mode.
