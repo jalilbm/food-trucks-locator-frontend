@@ -17,6 +17,7 @@ Welcome to the Food Truck Locator App, a creative solution designed for RAKT's "
 - **Frontend Framework**: ReactJS with TypeScript for robust and scalable application structure.
 - **Styling**: Combination of Tailwind CSS and Ant Design (antd) to demonstrate versatility in UI frameworks and design implementation.
 - **No Backend Routing**: Opted for a frontend-centric approach, suitable for the simplicity and scope of the application.
+- **Data Accuracy**: The dataset used may occasionally contain food trucks with identical latitude and longitude coordinates. In such cases, map markers representing these trucks will overlap. This is an inherent characteristic of the dataset and not a limitation of the application itself.
 
 ### User Experience:
 
@@ -25,6 +26,8 @@ Welcome to the Food Truck Locator App, a creative solution designed for RAKT's "
   - **Manual Input**: Latitude and longitude can be manually input for custom location searches.
 - **Responsive and Informative Table**: Displays essential food truck information like name, address, food items, distance, and duration from the user's location.
 - **Dynamic Map Visualization**: Showcases user-selected or auto-detected location and nearby trucks on an interactive map.
+
+* **Map Marker Overlap**: Due to the nature of the dataset, some food trucks may have the same geographical coordinates, resulting in overlapping markers on the map. Users should be aware that such overlaps represent multiple trucks stationed at the same or very close locations.
 
 ### Additional Features:
 
