@@ -1,3 +1,4 @@
+// Home Component: Main page for the Food Truck Locator App
 import { useRef, useEffect, useState } from "react";
 import ToggleTime from "../../components/ToggleTime";
 import moment from "moment-timezone";
@@ -7,6 +8,7 @@ import { TruckData } from "../../types";
 import { message } from "antd";
 
 const Home: React.FC = () => {
+	// References and state hooks
 	let checkboxRef = useRef<HTMLInputElement>(null);
 	let selectedFetchLocation = useRef<string>("");
 	const [messageApi, contextHolder] = message.useMessage();
@@ -18,11 +20,12 @@ const Home: React.FC = () => {
 		lat: null,
 		lon: null,
 	});
-	const timezone = moment.tz.guess(); // This guesses the user's timezone
+	const timezone = moment.tz.guess(); // Guessing the user's timezone
 	const [manualLat, setManualLat] = useState("");
 	const [manualLon, setManualLon] = useState("");
 	const [nearTrucks, setNearTrucks] = useState<TruckData[]>([]);
 
+	// Effect for updating current time every second
 	useEffect(() => {
 		// Update the current time every second
 		const timer = setInterval(() => {
@@ -33,6 +36,7 @@ const Home: React.FC = () => {
 		return () => clearInterval(timer);
 	}, []);
 
+	// Effect for getting user's geolocation if available
 	useEffect(() => {
 		// Check if geolocation is available
 		if ("geolocation" in navigator) {
@@ -55,14 +59,40 @@ const Home: React.FC = () => {
 		}
 	}, []);
 
+	// Effect to handle checkbox state changes for truck availability
+	useEffect(() => {
+		// Function to handle checkbox state changes
+		const handleCheckboxChange = () => {
+			if (
+				(userLocation.lon !== null && userLocation.lat !== null) ||
+				(manualLat !== null && manualLon !== null)
+			) {
+				fetchTrucksFromAPI();
+			}
+		};
+
+		// Event listener if the ref and the current element exist
+		const checkbox = checkboxRef.current;
+		if (checkbox) {
+			checkbox.addEventListener("change", handleCheckboxChange);
+		}
+
+		// Clean-up function to remove the event listener
+		return () => {
+			if (checkbox) {
+				checkbox.removeEventListener("change", handleCheckboxChange);
+			}
+		};
+	}, [checkboxRef, userLocation, manualLat, manualLon]);
+
+	// Function to fetch nearby food trucks from the API
 	const fetchTrucksFromAPI = async () => {
 		let url = `${process.env.REACT_APP_BACKEND_BASE_URL}/api/food-trucks/`;
 
+		// Constructing the URL based on user selection or manual input
 		if (selectedFetchLocation.current === "fetch-near-me") {
-			// fetches based on locations near to you
 			url += `?latitude=${userLocation.lat}&longitude=${userLocation.lon}`;
 		} else {
-			// fetches based on locations near to manual entered location
 			url += `?latitude=${manualLat}&longitude=${manualLon}`;
 		}
 
@@ -70,6 +100,7 @@ const Home: React.FC = () => {
 			url += `&time=${currentTime}&timezone=${timezone}`;
 		}
 
+		// Fetching data from the backend and handling responses
 		try {
 			const response = await fetch(url);
 
@@ -115,31 +146,6 @@ const Home: React.FC = () => {
 			}
 		}
 	};
-
-	useEffect(() => {
-		// Function to handle checkbox state changes
-		const handleCheckboxChange = () => {
-			if (
-				(userLocation.lon !== null && userLocation.lat !== null) ||
-				(manualLat !== null && manualLon !== null)
-			) {
-				fetchTrucksFromAPI();
-			}
-		};
-
-		// Event listener if the ref and the current element exist
-		const checkbox = checkboxRef.current;
-		if (checkbox) {
-			checkbox.addEventListener("change", handleCheckboxChange);
-		}
-
-		// Clean-up function to remove the event listener
-		return () => {
-			if (checkbox) {
-				checkbox.removeEventListener("change", handleCheckboxChange);
-			}
-		};
-	}, [checkboxRef, userLocation, manualLat, manualLon]);
 
 	const handleFloatInput = (
 		value: string,
