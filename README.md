@@ -59,3 +59,11 @@ cd food-trucks-locator-frontend
 This project represents a combination of required functionalities and additional features that I incorporated to enhance the user experience and demonstrate my skills. While I adhered closely to the project requirements, I also took creative liberties to explore and implement features that add value to the application.
 
 Thank you for considering my submission for RAKT's Engineering Challenge. I look forward to any feedback and the opportunity to discuss my work further.
+
+## 📸 Application Demonstrations
+
+### React Application Screenshot
+
+Below is a screenshot of the Food Truck Locator React application, showcasing its user interface and functionality.
+
+![React App Screenshot](screenshots/screencapture.png)
