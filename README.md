@@ -2,7 +2,7 @@
 
 **Experience the Food Truck Locator App:** [Food Trucks Locator Frontend](https://food-trucks-locator.netlify.app/)
 
-## 🚀 Project Overview
+## Project Overview
 
 Welcome to the Food Truck Locator App, a creative solution designed for RAKT's "Out-of-the-Box" Engineering Challenge. This application is built using ReactJS with TypeScript, demonstrating my skills in modern web development. The app is designed to help users in San Francisco find nearby food trucks, providing an easy and fun way to explore local street food gems.
 
